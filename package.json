@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A small inn with a prime location and some bad code.",
   "scripts": {
+    "pretest": "check-node-version --package",
     "test": "echo 'Hellllooo? Anyone there?'",
     "lint": "eslint ./ --ignore-path .gitignore"
   },
@@ -27,5 +28,11 @@
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
     "jest": "^26.6.3"
+  },
+  "engines": {
+    "node": "^14"
+  },
+  "dependencies": {
+    "check-node-version": "^4.1.0"
   }
 }
