@@ -1,11 +1,23 @@
 import { Item, updateQuality } from './gilded_rose';
 
 describe('`updateQuality`', () => {
-  it.todo("Why won't my test pass?", () => {
-    const standardItem = new Item('Haunted Shoe', 10, 10);
-    updateQuality([standardItem]);
-    expect(standardItem.sell_in).toBe(4);
-  });
+  describe('standard items', () => {
+    it('a simple, standard item decreases sell_in by 1', () => {
+      const standardItem = new Item('Haunted Shoe', 10, 10);
+      updateQuality([standardItem]);
+      expect(standardItem.sell_in).toBe(9);
+    });
 
-  it.todo('This is a good place for a good test!');
+    it('a simple, standard item decreases quality by 1 when above sell_in is above zero', () => {
+      const standardItem = new Item('Haunted Shoe', 10, 10);
+      updateQuality([standardItem]);
+      expect(standardItem.quality).toBe(9);
+    });
+
+    it('a simple, standard item decreases quality by 2 when sell_in is below zero', () => {
+      const standardItem = new Item('Haunted Shoe', 0, 10);
+      updateQuality([standardItem]);
+      expect(standardItem.quality).toBe(8);
+    });
+  });
 });
