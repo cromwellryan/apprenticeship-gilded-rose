@@ -40,4 +40,17 @@ describe('`updateQuality`', () => {
       expect(brie.quality).toBe(50);
     });
   });
+
+  describe('Sulfuras', () => {
+    it('does not ever need sold', () => {
+      const sulfuras = new Item('Sulfuras, Hand of Ragnaros', 10, 50);
+      updateQuality([sulfuras]);
+      expect(sulfuras.sell_in).toBe(10);
+    });
+    it('does not ever decrease in quality', () => {
+      const sulfuras = new Item('Sulfuras, Hand of Ragnaros', 10, 50);
+      updateQuality([sulfuras]);
+      expect(sulfuras.quality).toBe(50);
+    });
+  });
 });
