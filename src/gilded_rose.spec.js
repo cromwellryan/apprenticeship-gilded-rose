@@ -19,5 +19,25 @@ describe('`updateQuality`', () => {
       updateQuality([standardItem]);
       expect(standardItem.quality).toBe(8);
     });
+
+    it('a simple, standard item cannot have a negative quality', () => {
+      const standardItem = new Item('Haunted Shoe', 0, 0);
+      updateQuality([standardItem]);
+      expect(standardItem.quality).toBe(0);
+    });
+  });
+
+  describe('Aged Brie', () => {
+    it('aged brie increases in quality as it ages', () => {
+      const brie = new Item('Aged Brie', 10, 10);
+      updateQuality([brie]);
+      expect(brie.quality).toBe(11);
+    });
+
+    it('aged brie never has more than 50 as a quality', () => {
+      const brie = new Item('Aged Brie', 10, 50);
+      updateQuality([brie]);
+      expect(brie.quality).toBe(50);
+    });
   });
 });
