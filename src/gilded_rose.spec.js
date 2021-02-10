@@ -53,4 +53,28 @@ describe('`updateQuality`', () => {
       expect(sulfuras.quality).toBe(50);
     });
   });
+
+  describe('Backstage passes', () => {
+    it('increases in quality as it ages', () => {
+      const passes = new Item('Backstage passes to a TAFKAL80ETC concert', 20, 30);
+      updateQuality([passes]);
+      expect(passes.quality).toBe(31);
+    });
+    it('increases in quality by 2 as it ages when 10 days left', () => {
+      const passes = new Item('Backstage passes to a TAFKAL80ETC concert', 10, 30);
+      updateQuality([passes]);
+      expect(passes.quality).toBe(32);
+    });
+    it('increases in quality by 3 as it ages when 10 days left', () => {
+      const passes = new Item('Backstage passes to a TAFKAL80ETC concert', 5, 30);
+      updateQuality([passes]);
+      expect(passes.quality).toBe(33);
+    });
+    it('is worthless after the event', () => {
+      const passes = new Item('Backstage passes to a TAFKAL80ETC concert', 1, 30);
+      updateQuality([passes]);
+      updateQuality([passes]);
+      expect(passes.quality).toBe(0);
+    });
+  });
 });
